@@ -7,9 +7,7 @@ export default class App extends React.Component {
     super (props) 
     this.state = { 
       time: 0, 
-      isActive: false, 
-      start : 0 
-    } 
+      isActive: false,
 }
 startTimer = () => {
   this.setState ({ 
