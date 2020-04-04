@@ -1,26 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TimeFormat from 'hh-mm-ss'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  constructor (props) { 
+    super (props) 
+    this.state = { 
+      time: 0, 
+      isActive: false, 
+      start : 0 
+    } 
+}
+startTimer = () => {
+  this.setState ({ 
+    isActive : true
+  }) 
+  this.intervalID = setInterval (() => {this.setState({time: this.state.time+1})},1000)
+} 
+
+stopTimer = () => {
+  this.setState ({isActive: false}) 
+  clearInterval(this.intervalID)
 }
 
-export default App;
+resetTimer = () => {
+  clearInterval(this.intervalID)
+  this.setState ({time: 0, isActive: false})
+} 
+  render() {
+  return (
+          <div className="App">
+              <header className="App-header">
+                <div>
+                  <div className="time">
+                    {TimeFormat.fromS(this.state.time, 'hh:mm:ss')}
+                  </div>
+                  <div className="title">
+                    <span>Hour</span>
+                    <span>Minute</span>
+                    <span>Second</span>
+                  </div>
+                </div>
+                <div className="btn">
+                  <button type="button" class="btn btn-outline-primary" 
+                    onClick={(!this.state.isActive)?
+                    this.startTimer:this.stopTimer}>Start
+                  </button>
+                  <button type="button" class="btn btn-outline-dark"
+                    onClick={this.resetTimer}>Reset</button>
+                </div>
+              </header>
+        </div>
+        )
+  };
+}
