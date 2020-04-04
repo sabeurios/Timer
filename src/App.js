@@ -9,6 +9,7 @@ export default class App extends React.Component {
       time: 0, 
       isActive: false,
 }
+  }
 startTimer = () => {
   this.setState ({ 
     isActive : true
