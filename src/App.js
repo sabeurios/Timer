@@ -40,11 +40,12 @@ resetTimer = () => {
                     <span>Second</span>
                   </div>
                 </div>
-                <div className="btn">
+                <div className="btn">{(!this.state.isActive)?
                   <button type="button" class="btn btn-outline-primary" 
-                    onClick={(!this.state.isActive)?
-                    this.startTimer:this.stopTimer}>Start/Pause
-                  </button>
+                    onClick={this.startTimer}>Start
+                  </button>:<button type="button" class="btn btn-outline-primary" 
+                    onClick={this.stopTimer}>Pause
+                  </button>}
                   <button type="button" class="btn btn-outline-dark"
                     onClick={this.resetTimer}>Reset</button>
                 </div>
