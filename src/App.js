@@ -43,7 +43,7 @@ resetTimer = () => {
                 <div className="btn">
                   <button type="button" class="btn btn-outline-primary" 
                     onClick={(!this.state.isActive)?
-                    this.startTimer:this.stopTimer}>Start
+                    this.startTimer:this.stopTimer}>Start/Pause
                   </button>
                   <button type="button" class="btn btn-outline-dark"
                     onClick={this.resetTimer}>Reset</button>
